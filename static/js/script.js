@@ -58,3 +58,8 @@ $(document).ready(function() {
 }); 
 // jquery end
 
+setTimeout(function() {
+    // Hide the alert after 4 seconds
+    $('#message').fadeOut('slow')
+}, 4000) // 4000 milliseconds = 4 seconds
+    
