@@ -143,6 +143,6 @@ MESSAGE_TAGS = {
 # Email settings [SMTP SETTINGS]
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587                              #PORT FOR GMAIL
-EMAIL_HOST_USER ='chait2408@gmail.com'        #YOUR EMAIL
-EMAIL_HOST_PASSWORD ='gumy cveg ibfa easm'    #YOUR PASSWORD
+EMAIL_HOST_USER =   #YOUR EMAIL
+EMAIL_HOST_PASSWORD =#YOUR PASSWORD
 EMAIL_USE_TLS = True
