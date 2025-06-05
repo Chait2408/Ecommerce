@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from category.models import category
 from accounts.models import Account
-from django.db.models import Avg
+from django.db.models import Avg, Count
 
 # Create your models here.
 
@@ -38,6 +38,19 @@ class Product(models.Model):
             count = int(reviews['count'])
         return count
     
+
+
+class ProductGallery(models.Model):
+    product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='store/products', max_length=255)
+
+    def __str__(self):
+        return self.product.product_name
+
+    class Meta:
+        verbose_name = 'productgallery'
+        verbose_name_plural = 'product gallery'
+
 
 class VariationManager(models.Manager):
     def colors(self):
