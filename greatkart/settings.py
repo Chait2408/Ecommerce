@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+mqtkq9ef+asl106u$6*m-&ym0au$+6j)otb_+))&@7#8l=6yt'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'store',
     'carts',
     'orders',
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
@@ -141,8 +143,8 @@ MESSAGE_TAGS = {
 }
 
 # Email settings [SMTP SETTINGS]
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587                              #PORT FOR GMAIL
-EMAIL_HOST_USER ='chait2408@gmail.com'        #YOUR EMAIL
-EMAIL_HOST_PASSWORD ='gumy cveg ibfa easm'    #YOUR PASSWORD
-EMAIL_USE_TLS = True
+EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com')  # SMTP SERVER
+EMAIL_PORT = config('EMAIL_PORT', cast=int)                  #PORT FOR GMAIL
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')                  #YOUR EMAIL
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')          #YOUR PASSWORD
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)           # USE TLS
